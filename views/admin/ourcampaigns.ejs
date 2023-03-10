@@ -1,0 +1,62 @@
+<main>
+	<%- include('../partials/adminSidebar') %>
+	
+	<div id="main-wrapper">
+		
+		<div class="bg-white shadow-sm p-3">
+			<span class="me-3" id="sidebar-toggler-btn"><i class="fas fa-bars"></i></span>
+			<h5 class="m-0 color-theme d-inline-block">Current Campaigns</h5>
+		</div>
+		
+		<div class="m-4">
+			<% for(let i=0; i<currentCampaigns.length; i++) { %>
+				<div class="bg-white mb-4 p-4 shadow-sm">
+
+    
+					<div class="mb-2">
+                        <div><%= i+1 %></div>
+						<span>NGO:</span>
+						<span><%= currentCampaigns[i].ngo.firstName %></span>
+					</div>
+					
+					<div class="mb-2">
+						<span>Date And Time:</span>
+						<span><%= currentCampaigns[i].dateandtime.toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short"})%></span>
+					</div>
+					
+					<div class="mb-2">
+						<span>Address :</span>
+						<span><%= currentCampaigns[i].address %></span>
+					</div>
+					
+					<div class="mb-2">
+						<span>Contact Number:</span>
+						<span><%= currentCampaigns[i].phone %></span>
+					</div>
+
+                    <div class="mb-2">
+						<span>Need Type:</span>
+						<span><%= currentCampaigns[i].needtype %></span>
+					</div>
+					
+                    <div class="mb-2">
+						<span>Quantity Needed:</span>
+						<span><%= currentCampaigns[i].quantity %></span>
+					</div>
+                    <div class="mb-2">
+						<span>Link:</span>
+						<span><%= currentCampaigns[i].link %></span>
+					</div>
+                    <div class="mt-4">
+                       <a href="/admin/deletecampaign/<%= currentCampaigns[i]._id %>" class="btn btn-danger">Delete</a>
+                    </div>
+					
+					
+				</div>
+			<% } %>
+		</div>
+		
+		
+		
+	</div>
+</main>

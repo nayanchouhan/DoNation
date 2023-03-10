@@ -1,0 +1,70 @@
+<main>
+	<%- include('../partials/adminSidebar') %>
+	
+	<div id="main-wrapper">
+		<div class="bg-white shadow-sm p-3">
+			<span class="me-3" id="sidebar-toggler-btn"><i class="fas fa-bars"></i></span>
+			<h5 class="m-0 color-theme d-inline-block">Donate</h5>
+		</div>
+		
+		<form action="/admin/campaignrequest" method="POST" class="border m-4 my-3 p-4 bg-white rounded-2 shadow">
+			<!-- <div class="mb-4">
+				<label for="food" class="form-label">Donation type</label>
+				<input type="text" name="donation[foodType]" class="form-control" id="food" placeholder="Enter food.." required autofocus>
+			</div> -->
+
+			<!-- <div class="mb-4">
+				<div class="mb-4 col-sm-6">
+					<label for="ngo" class="form-label">NGO Name</label>
+					<input type="text" name="campaign[ngo]" class="form-control" id="ngo" placeholder="Enter name of NGO" required>
+				</div>
+			</div> -->
+
+            <div class="row">
+				<div class="mb-4 col-sm-6">
+					<label for="dateandtime" class="form-label">Date and Time</label>
+					<input type="datetime-local" name="campaign[dateandtime]" class="form-control" id="dateandtime" placeholder="Enter date and time" required>
+				</div>
+				
+				<div class="mb-4 col-sm-6">
+					<label for="address" class="form-label">Enter address of org</label>
+					<input type="text" name="campaign[address]" class="form-control" id="address" required>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="mb-4 col-sm-6">
+					<label for="quantity" class="form-label">Quantity</label>
+					<input type="text" name="campaign[quantity]" class="form-control" id="quantity" placeholder="Enter quantity of food.." required>
+				</div>
+				<div class="mb-4 col-sm-8">
+					<label for="phone" class="form-label">NGO contact no</label>
+					<input type="text" name="campaign[phone]" class="form-control" id="phone" placeholder="Enter contact" value="<%= currentUser.address %>" required>
+				</div>
+				
+			</div>
+			
+			<div class="row">
+				<div class="mb-4 col-sm-4">
+					<label for="needtype" class="form-label">Needtype</label>
+					<input type="text" name="campaign[needtype]" class="form-control" id="needtype" placeholder="Enter need type" value="<%= currentUser.phone %>" required>
+				</div>
+                <div class="mb-4 col-sm-4">
+					<label for="link" class="form-label">add Link</label>
+					<input type="url" name="campaign[link]" class="form-control" id="link" placeholder="Enter link" value="<%= currentUser.phone %>" required>
+				</div>
+
+			</div>
+			
+			
+			<button type="submit" class="btn w-75 d-block m-auto mt-4">Submit</button>
+		</form>
+		
+	</div>
+</main>
+
+<script>
+	const d = new Date();
+	const dateString = d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2) + "T" + ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
+	document.getElementById("time").value = dateString;
+</script>
